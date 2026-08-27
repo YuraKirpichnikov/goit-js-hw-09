@@ -2,12 +2,10 @@ const STORAGE_KEY = 'feedback-form-state';
 
 const form = document.querySelector('.feedback-form');
 
-
 let formData = {
   email: '',
   message: '',
 };
-
 
 const savedData = JSON.parse(localStorage.getItem(STORAGE_KEY));
 
@@ -36,9 +34,7 @@ function onFormSubmit(event) {
     return;
   }
 
-  for (const [key, value] of Object.entries(formData)) {
-    console.log(`${key}: ${value}`);
-  }
+  console.log(formData);
 
   formData = {
     email: '',
