@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Генератор промісів</title>
+
+    <!-- iziToast styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/css/iziToast.min.css" />
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Segoe UI", Roboto, Arial, sans-serif;
+            background: linear-gradient(135deg, #1f2430 0%, #3a2f5b 100%);
+            color: #fff;
+        }
+
+        .form {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(6px);
+            border-radius: 16px;
+            padding: 32px;
+            width: 100%;
+            max-width: 340px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        .form label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 6px;
+            opacity: 0.85;
+        }
+
+        .form>label {
+            margin-bottom: 20px;
+        }
+
+        .form input[type="number"] {
+            width: 100%;
+            margin-top: 6px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: none;
+            font-size: 15px;
+            outline: none;
+        }
+
+        fieldset {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            margin: 0 0 20px;
+            padding: 14px 16px;
+        }
+
+        legend {
+            padding: 0 6px;
+            font-size: 13px;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        fieldset label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+
+        fieldset label:last-child {
+            margin-bottom: 0;
+        }
+
+        fieldset input[type="radio"] {
+            width: 16px;
+            height: 16px;
+            accent-color: #7f5af0;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 12px 0;
+            border-radius: 8px;
+            border: none;
+            background: #7f5af0;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        button[type="submit"]:hover {
+            background: #9573fd;
+        }
+    </style>
+</head>
+
+<body>
+    <form class="form">
+        <label>
+            Delay (ms)
+            <input type="number" name="delay" required />
+        </label>
+
+        <fieldset>
+            <legend>State</legend>
+            <label>
+                <input type="radio" name="state" value="fulfilled" required />
+                Fulfilled
+            </label>
+            <label>
+                <input type="radio" name="state" value="rejected" required />
+                Rejected
+            </label>
+        </fieldset>
+
+        <button type="submit">Create notification</button>
+    </form>
+
+    <!-- iziToast script -->
+    <script src="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/js/iziToast.min.js"></script>
+
+    <script src="2-snacker.js"></script>
+</body>
+
+</html>
