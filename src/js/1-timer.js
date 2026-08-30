@@ -1,6 +1,3 @@
-import flatpickr from 'flatpickr';
-import 'flatpickr/dist/flatpickr.min.css';
-
 const datetimePickerInput = document.querySelector('#datetime-picker');
 const startBtn = document.querySelector('[data-start]');
 
@@ -13,6 +10,8 @@ let userSelectedDate = null;
 
 let timerId = null;
 
+startBtn.disabled = true;
+
 const options = {
   enableTime: true,
   time_24hr: true,
@@ -22,7 +21,11 @@ const options = {
     const selectedDate = selectedDates[0];
 
     if (selectedDate <= new Date()) {
-      Notiflix.Notify.failure('Please choose a date in the future');
+      iziToast.error({
+        title: 'Error',
+        message: 'Please choose a date in the future',
+        position: 'topRight',
+      });
       startBtn.disabled = true;
       return;
     }
@@ -53,7 +56,11 @@ function updateTimerDisplay() {
     clearInterval(timerId);
     renderTime({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
-    Notiflix.Notify.success('Time is up!');
+    iziToast.success({
+      title: 'Done',
+      message: 'Time is up!',
+      position: 'topRight',
+    });
 
     datetimePickerInput.disabled = false;
     userSelectedDate = null;
