@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Таймер зворотного відліку</title>
+
+    <!-- Flatpickr styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+    <!-- Notiflix styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notiflix@3.2.6/dist/notiflix-3.2.6.min.css" />
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Segoe UI", Roboto, Arial, sans-serif;
+            background: linear-gradient(135deg, #1f2430 0%, #3a2f5b 100%);
+            color: #fff;
+        }
+
+        .wrapper {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(6px);
+            border-radius: 16px;
+            padding: 40px;
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        h1 {
+            font-size: 20px;
+            margin: 0 0 24px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 32px;
+        }
+
+        #datetime-picker {
+            flex: 1;
+            padding: 10px 14px;
+            border-radius: 8px;
+            border: none;
+            font-size: 15px;
+            outline: none;
+        }
+
+        button[data-start] {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            background: #7f5af0;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease, opacity 0.2s ease;
+        }
+
+        button[data-start]:hover:not(:disabled) {
+            background: #9573fd;
+        }
+
+        button[data-start]:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .timer {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .field {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 14px 0;
+        }
+
+        .value {
+            display: block;
+            font-size: 28px;
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .label {
+            display: block;
+            font-size: 12px;
+            margin-top: 4px;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1>Оберіть дату та натисніть Start</h1>
+
+        <div class="controls">
+            <input type="text" id="datetime-picker" placeholder="Оберіть дату і час" />
+            <button type="button" data-start disabled>Start</button>
+        </div>
+
+        <div class="timer">
+            <div class="field">
+                <span class="value" data-days>00</span>
+                <span class="label">Days</span>
+            </div>
+            <div class="field">
+                <span class="value" data-hours>00</span>
+                <span class="label">Hours</span>
+            </div>
+            <div class="field">
+                <span class="value" data-minutes>00</span>
+                <span class="label">Minutes</span>
+            </div>
+            <div class="field">
+                <span class="value" data-seconds>00</span>
+                <span class="label">Seconds</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Flatpickr script -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <!-- Notiflix script -->
+    <script src="https://cdn.jsdelivr.net/npm/notiflix@3.2.6/dist/notiflix-3.2.6.min.js"></script>
+
+    <script src="t-timer.js"></script>
+</body>
+
+</html>
